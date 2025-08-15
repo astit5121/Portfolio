@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Temperature Converter - Astitva Pal</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  body {
+    background: #0f2027;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  .converter-box {
+    background: rgba(255,255,255,0.1);
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  input, select, button {
+    padding: 10px;
+    margin: 8px 0;
+    width: 100%;
+    font-size: 1rem;
+  }
+</style>
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  <p>Convert temperatures between Celsius and Fahrenheit.</p>
+
+  <div class="converter-box">
+    <input type="number" id="tempInput" placeholder="Enter temperature">
+    <select id="tempUnit">
+      <option value="celsius">Celsius to Fahrenheit</option>
+      <option value="fahrenheit">Fahrenheit to Celsius</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <p id="result"></p>
+  </div>
+
+  <a href="index.html" style="color:orange;">← Back to Portfolio</a>
+
+<script>
+function convertTemperature() {
+  const temp = parseFloat(document.getElementById("tempInput").value);
+  const unit = document.getElementById("tempUnit").value;
+  let converted;
+  
+  if (unit === "celsius") {
+    converted = (temp * 9/5) + 32;
+    document.getElementById("result").innerText = `${converted.toFixed(2)} °F`;
+  } else {
+    converted = (temp - 32) * 5/9;
+    document.getElementById("result").innerText = `${converted.toFixed(2)} °C`;
+  }
+}
+</script>
+</body>
+</html>

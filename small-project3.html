@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quote Generator - Astitva Pal</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  body {
+    background: #0f2027;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  .quote-box {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+  }
+  button {
+    margin-top: 20px;
+    background: #ff8a00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <h1>Random Quote Generator</h1>
+  <p>Click the button to generate an inspirational quote!</p>
+
+  <div class="quote-box" id="quoteBox">"Your time is limited, so don’t waste it living someone else’s life."</div>
+  <button onclick="generateQuote()">New Quote</button>
+
+  <a href="index.html" style="color:orange; display:block; margin-top:20px;">← Back to Portfolio</a>
+
+<script>
+const quotes = [
+  "The best way to get started is to quit talking and begin doing.",
+  "Don’t let yesterday take up too much of today.",
+  "It’s not whether you get knocked down, it’s whether you get up.",
+  "Your time is limited, so don’t waste it living someone else’s life.",
+  "The harder you work for something, the greater you’ll feel when you achieve it."
+];
+
+function generateQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  document.getElementById("quoteBox").textContent = quotes[randomIndex];
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 1 - Edlly Mobile Application | Astitva Pal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #111827;      /* Dark background */
+  --secondary: #1f2937;    /* Slightly lighter dark */
+  --accent: #ff8a00;       /* Orange accent */
+  --accent-light: #e52e71; /* Pinkish gradient color */
+  --text-primary: #f9fafb; /* Main text - near white */
+  --text-secondary: #d1d5db;
+  --bg-dark: #0f172a;
+  --bg-card: rgba(255,255,255,0.06);
+  --border-dark: rgba(255,255,255,0.08);
+  --shadow-md: 0 4px 10px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: var(--text-primary);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header Section */
+.hero {
+  padding: 6rem 0 4rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  margin: 2rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+/* Main Content */
+.main-content {
+  background: var(--secondary);
+  border-radius: 2rem 2rem 0 0;
+  margin-top: -2rem;
+  position: relative;
+  z-index: 3;
+  padding: 4rem 0 2rem;
+}
+
+/* Features Grid */
+.features {
+  padding: 4rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+.feature-icon {
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.feature-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Tech Stack */
+.tech-stack {
+  padding: 4rem 0;
+  background: #1e293b;
+}
+
+.tech-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.tech-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  min-width: 120px;
+  transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.tech-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.tech-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-dark);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .hero p  { font-size: 1.125rem; }
+  .section-title { font-size: 2rem; }
+  .features-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge">✨ Featured Project</div>
+        <h1>Edlly</h1>
+        <p>A sophisticated, responsive mobile application built with modern technologies and design principles</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <section class="features">
+        <div class="section-header">
+          <h2 class="section-title">Key Features</h2>
+          <p class="section-subtitle">Discover what makes this project stand out with cutting-edge features and elegant design</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card"><div class="feature-icon">🎨</div><h3 class="feature-title">Premium Design</h3><p class="feature-description">Meticulously crafted UI ensuring premium user experience</p></div>
+          <div class="feature-card"><div class="feature-icon">📱</div><h3 class="feature-title">Responsive Layout</h3><p class="feature-description">Seamlessly fits all screen sizes</p></div>
+          <div class="feature-card"><div class="feature-icon">⚡</div><h3 class="feature-title">Lightning Fast</h3><p class="feature-description">Optimized for speed and performance</p></div>
+          <div class="feature-card"><div class="feature-icon">🔧</div><h3 class="feature-title">Maintainable Code</h3><p class="feature-description">Clean, documented architecture</p></div>
+          <div class="feature-card"><div class="feature-icon">🚀</div><h3 class="feature-title">Modern Stack</h3><p class="feature-description">Using the latest web tech</p></div>
+          <div class="feature-card"><div class="feature-icon">🔒</div><h3 class="feature-title">Secure & Reliable</h3><p class="feature-description">Follows security best practices</p></div>
+        </div>
+      </section>
+
+      <section class="tech-stack">
+        <div class="section-header">
+          <h2 class="section-title">Technology Used</h2>
+          <p class="section-subtitle">Built with industry-leading tech and tools</p>
+        </div>
+        <div class="tech-grid">
+          <div class="tech-item"><span class="tech-icon">🌐</span><div class="tech-name">MongoDB</div></div>
+          <div class="tech-item"><span class="tech-icon">🎨</span><div class="tech-name">Tailwind CSS</div></div>
+          <div class="tech-item"><span class="tech-icon">⚛️</span><div class="tech-name">React-Native</div></div>
+        </div>
+      </section>
+
+      <section class="tech-stack">
+        <div class="section-header"><h2 class="section-title">Software Used - Android Studio</h2></div>
+      </section>
+
+      <section class="cta-section">
+        <div class="btn-group">
+          <a href="index.html" class="btn btn-secondary">← Back to Portfolio</a>
+          <a href="https://github.com/astit5121/EDLLY" class="btn btn-primary" target="_blank">View on GitHub</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
