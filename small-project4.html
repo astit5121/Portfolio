@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Jordan Tribute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at top, #0a0a0a, #000);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px 20px;
+      background: linear-gradient(135deg, #000000, #b30000 80%);
+      border-bottom: 3px solid #b30000;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ff1e1e, #ffffff, #ff1e1e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 5s infinite linear;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      opacity: 0.85;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    @keyframes shine {
+      0% { background-position: -200px; }
+      100% { background-position: 200px; }
+    }
+
+    /* Video Background */
+    .video-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .video-section video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+      z-index: -1;
+    }
+
+    .video-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 18px;
+      background: rgba(255, 0, 0, 0.8);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255,0,0,0.6);
+      transition: transform 0.2s ease;
+      z-index: 10;
+    }
+
+    .video-toggle:hover {
+      transform: scale(1.1);
+      background: rgba(255, 0, 0, 1);
+    }
+
+    .video-toggle:focus {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
+    }
+
+    /* Timeline */
+    .timeline {
+      max-width: 900px;
+      margin: auto;
+      padding: 50px 20px;
+      position: relative;
+    }
+
+    .timeline h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ff3333;
+    }
+
+    .timeline ul {
+      padding-left: 40px;
+      position: relative;
+    }
+
+    .timeline ul::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ff3333;
+    }
+
+    .timeline ul li {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border-left: 4px solid #ff3333;
+      list-style: none;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px rgba(255,0,0,0.3);
+      position: relative;
+    }
+
+    .timeline ul li::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: #ff3333;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff3333;
+    }
+
+    .timeline ul li:hover {
+      border-left: 4px solid #fff;
+      transform: translateX(10px) scale(1.02);
+      box-shadow: 0 0 28px rgba(255,0,0,0.7);
+    }
+
+    /* Card Sections */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      margin: 20px auto;
+      padding: 30px;
+      max-width: 800px;
+      box-shadow: 0 0 20px rgba(255,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255,0,0,0.8);
+    }
+
+    .card h2 {
+      margin-bottom: 15px;
+      color: #ff3333;
+      text-transform: uppercase;
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.08);
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff3333;
+      box-shadow: 0 0 15px rgba(255,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255,0,0,0.8);
+    }
+
+    /* Basketball Background */
+    .basketball-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .basketball {
+      position: absolute;
+      font-size: 30px;
+      animation: bounceAcross 15s linear infinite;
+      opacity: 0.6;
+    }
+
+    .basketball:nth-child(1) { animation-duration: 12s; font-size: 30px; }
+    .basketball:nth-child(2) { animation-duration: 18s; font-size: 40px; }
+    .basketball:nth-child(3) { animation-duration: 20s; font-size: 25px; }
+    .basketball:nth-child(4) { animation-duration: 15s; font-size: 35px; }
+
+    @keyframes bounceAcross {
+      0% { transform: translateY(0) translateX(-10%); opacity: 0; }
+      10% { opacity: 1; }
+      50% { transform: translateY(-50px) translateX(50vw); }
+      100% { transform: translateY(0) translateX(110vw); opacity: 0; }
+    }
+
+    /* Fade-in Animation */
+    section, .timeline, .card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    section.visible, .timeline.visible, .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fun fact smooth change */
+    #fun-fact {
+      display: inline-block;
+      transition: opacity 0.8s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Basketballs -->
+  <div class="basketball-bg">
+    <div class="basketball" style="top:10%; animation-delay:0s;">🏀</div>
+    <div class="basketball" style="top:30%; animation-delay:3s;">🏀</div>
+    <div class="basketball" style="top:50%; animation-delay:6s;">🏀</div>
+    <div class="basketball" style="top:70%; animation-delay:9s;">🏀</div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Michael Jordan Tribute</h1>
+    <p>The Legend. The Icon. The Greatest of All Time.</p>
+  </section>
+
+  <!-- Video Background Section -->
+  <div class="video-section">
+    <video autoplay muted loop id="bg-video" poster="jordan-poster.jpg">
+      <source src="michael-jordan.3840x2160.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <!-- Timeline -->
+    <section class="timeline">
+      <h2>Career Timeline</h2>
+      <ul>
+        <li>1984 - Drafted by the Chicago Bulls</li>
+        <li>1991 - Won first NBA Championship</li>
+        <li>1996 - Returned and led Bulls to 72-win season</li>
+        <li>1998 - Last shot with Bulls, sixth Championship</li>
+        <li>2003 - Final retirement from NBA</li>
+      </ul>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="card achievements">
+      <h2>Achievements</h2>
+      <p>6× NBA Champion, 5× MVP, 14× All-Star, 10× Scoring Champion, 2× Olympic Gold Medalist.</p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="card">
+      <h2>Career Stats</h2>
+      <div class="stats">
+        <div class="stat" data-target="32292">0<br><small>Points</small></div>
+        <div class="stat" data-target="5633">0<br><small>Assists</small></div>
+        <div class="stat" data-target="6672">0<br><small>Rebounds</small></div>
+      </div>
+    </section>
+
+    <!-- Legacy Section -->
+    <section class="card legacy">
+      <h2>Legacy</h2>
+      <p>Michael Jordan’s influence extends beyond basketball. His Air Jordan brand revolutionized sports marketing, and his competitive spirit continues to inspire athletes worldwide.</p>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="card quotes">
+      <h2>Famous Quote</h2>
+      <p>"I've failed over and over and over again in my life. And that is why I succeed."</p>
+    </section>
+
+    <!-- Highlight Reels -->
+    <section class="card">
+      <h2>Highlight Reels</h2>
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/LAr6oAKieHk" title="Michael Jordan Highlights" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <!-- Fun Fact Section -->
+    <section class="card">
+      <h2>Did You Know?</h2>
+      <p id="fun-fact">Michael Jordan played two seasons of minor league baseball during his first retirement.</p>
+    </section>
+  </div>
+
+  <!-- Video Toggle -->
+  <button class="video-toggle" id="toggleBtn">Pause Video</button>
+
+  <script>
+    // Scroll reveal effect
+    const elements = document.querySelectorAll("section, .timeline, .card");
+    window.addEventListener("scroll", () => {
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // Video toggle
+    const bgVideo = document.getElementById("bg-video");
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.addEventListener("click", () => {
+      if (bgVideo.paused) {
+        bgVideo.play();
+        toggleBtn.textContent = "Pause Video";
+      } else {
+        bgVideo.pause();
+        toggleBtn.textContent = "Play Video";
+      }
+    });
+
+    // Stats counter animation on scroll
+    const stats = document.querySelectorAll('.stat');
+    function animateStats() {
+      stats.forEach(stat => {
+        const rect = stat.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50 && !stat.classList.contains("counted")) {
+          stat.classList.add("counted");
+          let target = +stat.getAttribute('data-target');
+          let count = 0;
+          let increment = target / 200; // speed
+          function update() {
+            if (count < target) {
+              count += increment;
+              stat.innerHTML = Math.floor(count) + "<br><small>" + stat.querySelector('small').innerText + "</small>";
+              requestAnimationFrame(update);
+            } else {
+              stat.innerHTML = target + "<br><small>" + stat.querySelector('small').innerText + "</small>";
+            }
+          }
+          update();
+        }
+      });
+    }
+    window.addEventListener("scroll", animateStats);
+
+    // Fun Facts rotation
+    const funFacts = [
+      "Michael Jordan played two seasons of minor league baseball during his first retirement.",
+      "He wore the number 45 when he returned from retirement in 1995.",
+      "Jordan once scored 63 points in a playoff game against the Celtics.",
+      "He is the first billionaire in NBA history.",
+      "Jordan was cut from his high school varsity basketball team as a sophomore."
+    ];
+    let factIndex = 0;
+    const funFactEl = document.getElementById("fun-fact");
+    setInterval(() => {
+      funFactEl.style.opacity = 0;
+      setTimeout(() => {
+        factIndex = (factIndex + 1) % funFacts.length;
+        funFactEl.textContent = funFacts[factIndex];
+        funFactEl.style.opacity = 1;
+      }, 800);
+    }, 5000);
+  </script>
+</body>
+</html>
