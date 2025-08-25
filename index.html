@@ -11,7 +11,7 @@
   #loader {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: #0f2027; /* matching dark background */
+    background: #0f2027;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
   }
   .spinner {
     border: 8px solid rgba(255, 255, 255, 0.2);
-    border-top: 8px solid #ff8a00; /* accent color */
+    border-top: 8px solid #ff8a00;
     border-radius: 50%;
     width: 70px;
     height: 70px;
@@ -30,7 +30,6 @@
     100% { transform: rotate(360deg);}
   }
 
-  /* Hide main content until loader is gone */
   body.loading #main-content {
     display: none;
   }
@@ -88,7 +87,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-left: auto; /* push to right */
+    margin-left: auto;
   }
   nav {
     display: flex;
@@ -208,31 +207,41 @@
     0% { opacity: 0; transform: translateY(30px);}
     100% { opacity: 1; transform: translateY(0);}
   }
+
+  /* === Skill Bars === */
+  #skills .skill {
+    margin-bottom: 20px;
+  }
+  #skills .skill p {
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+  .skill-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+  .skill-level {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary-light), #e52e71);
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+  }
+
   @media (max-width: 600px) {
-    .nav-and-toggle {
-      gap: 10px;
-    }
-    nav a {
-      margin: 0 5px;
-      font-size: 0.9rem;
-    }
-    header {
-      flex-wrap: wrap;
-      padding: 15px 10px;
-    }
-    header h1 {
-      flex-basis: 100%;
-      text-align: center;
-      margin-bottom: 10px;
-    }
+    .nav-and-toggle { gap: 10px; }
+    nav a { margin: 0 5px; font-size: 0.9rem; }
+    header { flex-wrap: wrap; padding: 15px 10px; }
+    header h1 { flex-basis: 100%; text-align: center; margin-bottom: 10px; }
   }
 </style>
 </head>
 <body class="loading">
 <!-- Loader -->
-<div id="loader">
-  <div class="spinner"></div>
-</div>
+<div id="loader"><div class="spinner"></div></div>
 
 <!-- Video Background -->
 <video autoplay muted loop class="video-bg" playsinline>
@@ -247,6 +256,7 @@
     <div class="nav-and-toggle">
       <nav>
         <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/astit5121" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -254,6 +264,7 @@
           GitHub
         </a>
       </nav>
+    </div>
   </header>
 
   <main>
@@ -261,53 +272,108 @@
       <h2>About Me</h2>
       <p>I am a passionate developer creating beautiful and modern web experiences with clean design and engaging animations.</p>
     </section>
+
+    <!-- === Skills Section === -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skill">
+        <p>HTML</p>
+        <div class="skill-bar"><div class="skill-level" data-skill="95"></div></div>
+      </div>
+      <div class="skill">
+        <p>CSS</p>
+        <div class="skill-bar"><div class="skill-level" data-skill="90"></div></div>
+      </div>
+      <div class="skill">
+        <p>JavaScript</p>
+        <div class="skill-bar"><div class="skill-level" data-skill="90"></div></div>
+      </div>
+      <div class="skill">
+        <p>Java</p>
+        <div class="skill-bar"><div class="skill-level" data-skill="85"></div></div>
+      </div>
+      <div class="skill">
+        <p>React</p>
+        <div class="skill-bar"><div class="skill-level" data-skill="80"></div></div>
+      </div>
+      <div class="skill">
+        <p>React-Native</p>
+        <div class="skill-bar"><div class="skill-level" data-skill="80"></div></div>
+      </div>
+      <div class="skill">
+        <p>SQL/DBMS</p>
+        <div class="skill-bar"><div class="skill-level" data-skill="75"></div></div>
+      </div>
+    </section>
+
     <section id="projects">
       <h2>Projects</h2>
       <div class="project-list">
         <div class="project-card">
           <a href="project1.html" class="project-title" target="_blank" rel="noopener">Project 1 - Edlly</a>
-          <a href="https://github.com/astit5121/project1" class="github-link" target="_blank" rel="noopener" aria-label="GitHub Link for Project 1">
+          <a href="https://github.com/astit5121/project1" class="github-link" target="_blank" rel="noopener">
             <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
           </a>
         </div>
         <div class="project-card">
           <a href="project2.html" class="project-title" target="_blank" rel="noopener">Project 2 - Car Finder App</a>
-          <a href="https://github.com/astit5121/project2" class="github-link" target="_blank" rel="noopener" aria-label="GitHub Link for Project 2">
+          <a href="https://github.com/astit5121/project2" class="github-link" target="_blank" rel="noopener">
             <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
           </a>
         </div>
       </div>
     </section>
+
     <section id="small-projects">
-  <h2>Small Projects</h2>
-  <div class="project-list">
-    <div class="project-card">
-      <a href="small-project1.html" class="project-title" target="_blank" rel="noopener">Temperature Converter </a>
-      <a href="https://github.com/astit5121/small-project1" class="github-link" target="_blank" rel="noopener" aria-label="GitHub Link for Small Project 1">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
-      </a>
-    </div>
-    <div class="project-card">
-      <a href="small-project2.html" class="project-title" target="_blank" rel="noopener">Calculator</a>
-      <a href="https://github.com/astit5121/small-project2" class="github-link" target="_blank" rel="noopener" aria-label="GitHub Link for Small Project 2">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
-      </a>
-    </div>
-    
-    <div class="project-card">
-      <a href="small-project3.html" class="project-title" target="_blank" rel="noopener">Quote Generator</a>
-      <a href="https://github.com/astit5121/small-project4" class="github-link" target="_blank" rel="noopener" aria-label="GitHub Link for Small Project 4">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
-      </a>
-    </div>
-    <div class="project-card">
-      <a href="small-project4.html" class="project-title" target="_blank" rel="noopener">Tribute to Jordan </a>
-      <a href="https://github.com/astit5121/small-project1" class="github-link" target="_blank" rel="noopener" aria-label="GitHub Link for Small Project 1">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
-      </a>
-    </div>
-  </div>
+      <h2>Small Projects</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <a href="small-project1.html" class="project-title" target="_blank" rel="noopener">Temperature Converter</a>
+          <a href="https://github.com/astit5121/small-project1" class="github-link" target="_blank" rel="noopener">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
+          </a>
+        </div>
+        <div class="project-card">
+          <a href="small-project2.html" class="project-title" target="_blank" rel="noopener">Calculator</a>
+          <a href="https://github.com/astit5121/small-project2" class="github-link" target="_blank" rel="noopener">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
+          </a>
+        </div>
+        <div class="project-card">
+          <a href="small-project3.html" class="project-title" target="_blank" rel="noopener">Quote Generator</a>
+          <a href="https://github.com/astit5121/small-project4" class="github-link" target="_blank" rel="noopener">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
+          </a>
+        </div>
+        <div class="project-card">
+          <a href="small-project4.html" class="project-title" target="_blank" rel="noopener">Tribute to Jordan</a>
+          <a href="https://github.com/astit5121/small-project1" class="github-link" target="_blank" rel="noopener">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="Games">
+      <h2>Games</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <a href="game.html" class="project-title" target="_blank" rel="noopener">Game 1 - Red Square</a>
+         
+          </a>
+        </div>
+        <div class="project-card">
+          <a href="game1.html" class="project-title" target="_blank" rel="noopener">Game 2 - Matching Card </a>
+          
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+
+  <!-- Add more certificates as needed -->
 </section>
+
 
     <section id="contact">
       <h2>Contact</h2>
@@ -333,18 +399,22 @@
     }, 500);
   });
 
-  // Theme toggle button
-  document.querySelector('.theme-toggle-btn').addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-  });
-
-  // Animate sections on scroll
+  // Animate sections on scroll + skill bars
   const sections = document.querySelectorAll('section');
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+
+          // Animate skill bars
+          if (entry.target.id === 'skills') {
+            const bars = entry.target.querySelectorAll('.skill-level');
+            bars.forEach(bar => {
+              const finalWidth = bar.getAttribute('data-skill');
+              bar.style.width = finalWidth + '%';
+            });
+          }
         }
       });
     },
