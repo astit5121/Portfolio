@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple 2D Game</title>
+  <style>
+    body { text-align: center; background: #222; }
+    canvas { background: #eee; display: block; margin: 20px auto; }
+    p { color: #fff; }
+  </style>
+</head>
+<body>
+  <h2>Move the Red Square with Arrow Keys</h2>
+  <canvas id="gameCanvas" width="480" height="320"></canvas>
+  <p>Use arrow keys to move!</p>
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Square properties
+    let x = 220, y = 140, size = 40;
+    let dx = 0, dy = 0;
+    const speed = 3;
+
+    // Draw square
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "red";
+      ctx.fillRect(x, y, size, size);
+    }
+
+    // Update position
+    function update() {
+      x += dx;
+      y += dy;
+      // Edge bounds:
+      if (x < 0) x = 0;
+      if (x + size > canvas.width) x = canvas.width - size;
+      if (y < 0) y = 0;
+      if (y + size > canvas.height) y = canvas.height - size;
+    }
+
+    // Main game loop
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    // Keyboard controls
+    document.addEventListener("keydown", function(e) {
+      // Arrow keys
+      if (e.key === "ArrowUp") dy = -speed;
+      else if (e.key === "ArrowDown") dy = speed;
+      else if (e.key === "ArrowLeft") dx = -speed;
+      else if (e.key === "ArrowRight") dx = speed;
+    });
+    document.addEventListener("keyup", function(e) {
+      if (["ArrowUp", "ArrowDown"].includes(e.key)) dy = 0;
+      if (["ArrowLeft", "ArrowRight"].includes(e.key)) dx = 0;
+    });
+  </script>
+</body>
+</html>
